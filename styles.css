@@ -1,49 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=varela+Round&display=swap'); 
-body{
-  background-color:silver;
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+body {
+  background-color: silver;
 }
-*{
-  margin:0;
-  padding:0;
+
+* {
+  margin: 0;
+  padding: 0;
 }
-nav{
-  font-family: 'ubuntu',sans-serif;
+
+nav {
+  font-family: 'Ubuntu', sans-serif;
 }
-nav ul{
-  display:flex;
+
+nav ul {
+  display: flex;
   align-items: center;
-  list-style-type:none;
+  list-style-type: none;
   height: 50px;
   background-color: black;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
-nav ul li{
-  padding:0 12px;
+
+nav ul li {
+  padding: 0 12px;
 }
-.brand img{
-  width:44px;
-  padding:0 8px;
+
+.brand img {
+  width: 44px;
+  padding: 0 8px;
 }
-.brand{
-  display:flex;
-  align-items:center;
-  font-weight:bolder ;
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
   font-size: 1.3rem;
 }
-.container{
+
+.container {
   min-height: 60vh;
-  background-color:black;
+  background-color: black;
   color: white;
-  font-family: 'Varela Round',sans-serif;
+  font-family: 'Varela Round', sans-serif;
   display: flex;
-  width:70%;
+  flex-direction: column;
+  width: 70%;
   margin: 23px auto;
   border-radius: 12px;
-  padding:34px;
+  padding: 34px;
 }
-.bottom{
-  position:sticky;
+
+.container h2 {
+  margin-bottom: 20px;
+}
+
+.songItem {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  /* align-items: center; */
+}
+
+.songItem img {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 10px; /* Space between image and details */
+}
+
+.songDetails {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* text-align: center; */
+}
+
+.songTitle {
+  margin-bottom: 5px;
+}
+
+.songlistplay {
+  display: flex;
+  align-items: center;
+}
+
+.songlistplay span {
+  margin-right: 10px;
+}
+
+.bottom {
+  position: sticky;
   height: 100px;
   background-color: black;
   color: white;
@@ -54,27 +100,16 @@ nav ul li{
   padding: 20px;
   flex-direction: column;
 }
-.icons{
+
+.icons {
   margin-top: 20px;
 }
-#myprogressBar{
-  width: 80vw;
 
+#myprogressBar {
+  width: 80vw;
 }
+
 img {
-  height:40px;
+  height: 40px;
   width: 40px;
-  m
-}
-.songItem img{
-  height: 50px;
-  display: flex;
-  background-color: rgb(247, 242, 242);
-  width: 60%;
-}
-.songlistplay{
-  padding-left: 100;
-  height: 20 px;
-  width:10px;
-  margin-top: 30%;
 }
