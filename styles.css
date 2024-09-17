@@ -53,6 +53,7 @@ nav ul li {
   margin: 23px auto;
   border-radius: 12px;
   padding: 34px;
+  background-image:url(back.avif)
 }
 
 .container h2 {
@@ -135,4 +136,12 @@ img {
 }
 .timestamp{
   cursor: pointer;
+}
+.songinfo{
+  position:absolute;
+  left:0;
+}
+.songinfo img{
+ opacity: 0;
+ transition: opacity 1s ease-in;
 }
