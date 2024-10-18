@@ -1,123 +1,66 @@
-console.log("Welcome to TuneScape");
-let songIndex = 0;
-let audioElement = new Audio(songs[songIndex].filepath);
-let masterPlay = document.getElementById('masterPlay');
-let myProgressBar = document.getElementById('myProgressBar');
-
-// Define song data
+// List of songs with file paths
 let songs = [
-  { songName: "Perfect", filepath: "song/1.mp3", coverPath: "covers/perfect.jpg" },
-  { songName: "Senorita", filepath: "song/2.mp3", coverPath: "covers/senorita.jpg" },
-  { songName: "A Thousand Years", filepath: "song/3.mp3", coverPath: "covers/athousandyears.jpg" },
-  { songName: "Left and Right", filepath: "song/4.mp3", coverPath: "covers/leftandright.jpg" },
-  { songName: "Love Story", filepath: "song/5.mp3", coverPath: "covers/lovestory.jpg" },
-  { songName: "Night Changes", filepath: "song/6.mp3", coverPath: "covers/nightchanges.jpg" },
-  { songName: "Peaches", filepath: "song/7.mp3", coverPath: "covers/peaches.jpg" },
-  { songName: "Strip That Down", filepath: "song/8.mp3", coverPath: "covers/stripthatdown.jpg" },
-  { songName: "Kiss Me", filepath: "song/9.mp3", coverPath: "covers/kissme.jpg" },
-  { songName: "Friends", filepath: "song/10.mp3", coverPath: "covers/friends.jpg" },
+  { songName: "Perfect", filePath: "songs/perfect.mp3", coverPath: "perfect.jpg" },
+  { songName: "Senorita", filePath: "songs/senorita.mp3", coverPath: "senorita.jpg" },
+  { songName: "A Thousand Years", filePath: "songs/a_thousand_years.mp3", coverPath: "a thousand years.jpg" },
+  { songName: "Left and Right", filePath: "songs/left_and_right.mp3", coverPath: "left and right.jpg" },
+  { songName: "Love Story", filePath: "songs/love_story.mp3", coverPath: "love story.jpg" },
+  { songName: "Night Changes", filePath: "songs/night_changes.mp3", coverPath: "night changes.jpg" },
+  { songName: "Peaches", filePath: "songs/peaches.mp3", coverPath: "peaches.jpg" },
+  { songName: "Strip That Down", filePath: "songs/strip_that_down.mp3", coverPath: "strip that down.jpg" },
+  { songName: "Kiss Me", filePath: "songs/kiss_me.mp3", coverPath: "kiss me.jpg" },
+  { songName: "Friends", filePath: "songs/friends.mp3", coverPath: "friends.jpg" }
 ];
 
-// Function to play or pause the audio
-function togglePlayPause() {
-  if (audioElement.paused || audioElement.currentTime <= 0) {
-    audioElement.play();
-    masterPlay.classList.remove('fa-play-circle');
-    masterPlay.classList.add('fa-pause-circle');
-  } else {
-    audioElement.pause();
-    masterPlay.classList.remove('fa-pause-circle');
-    masterPlay.classList.add('fa-play-circle');
-  }
-}
-
-// Update progress bar as the audiconsole.log("Welcome to TuneScape");
-
-let songIndex = 0;
-let audioElement = new Audio('song/1.mp3'); // Starting with the first song
+let audioElement = new Audio(songs[0].filePath);
 let masterPlay = document.getElementById('masterPlay');
 let myProgressBar = document.getElementById('myprogressBar');
 let gif = document.getElementById('gif');
+let songItems = Array.from(document.getElementsByClassName('songItem'));
+let currentSongIndex = 0;
 
-// Song list with names, file paths, and cover images
-let songs = [
-  { songName: "Perfect", filepath: "song/1.mp3", coverPath: "covers/perfect.jpg" },
-  { songName: "Senorita", filepath: "song/2.mp3", coverPath: "covers/senorita.jpg" },
-  { songName: "A Thousand Years", filepath: "song/3.mp3", coverPath: "covers/athousandyears.jpg" },
-  { songName: "Left and Right", filepath: "song/4.mp3", coverPath: "covers/leftandright.jpg" },
-  { songName: "Love Story", filepath: "song/5.mp3", coverPath: "covers/lovestory.jpg" },
-  { songName: "Night Changes", filepath: "song/6.mp3", coverPath: "covers/nightchanges.jpg" },
-  { songName: "Peaches", filepath: "song/7.mp3", coverPath: "covers/peaches.jpg" },
-  { songName: "Strip That Down", filepath: "song/8.mp3", coverPath: "covers/stripthatdown.jpg" },
-  { songName: "Kiss Me", filepath: "song/9.mp3", coverPath: "covers/kissme.jpg" },
-  { songName: "Friends", filepath: "song/10.mp3", coverPath: "covers/friends.jpg" },
-];
+// Load song details and set up event listeners for play buttons
+songItems.forEach((element, i) => {
+  element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+  element.getElementsByTagName("span")[0].innerText = songs[i].songName;
+  
+  element.addEventListener('click', () => {
+    playSong(i);
+  });
+});
 
-// Play/pause toggle
+// Play or pause the song when the main play button is clicked
 masterPlay.addEventListener('click', () => {
   if (audioElement.paused || audioElement.currentTime <= 0) {
     audioElement.play();
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
-    gif.style.opacity = 1;
+    gif.style.display = 'block';
   } else {
     audioElement.pause();
     masterPlay.classList.remove('fa-pause-circle');
     masterPlay.classList.add('fa-play-circle');
-    gif.style.opacity = 0;
+    gif.style.display = 'none';
   }
 });
 
-// Update progress bar as audio plays
+// Function to play the selected song
+function playSong(index) {
+  audioElement.src = songs[index].filePath;
+  audioElement.play();
+  masterPlay.classList.remove('fa-play-circle');
+  masterPlay.classList.add('fa-pause-circle');
+  gif.style.display = 'block';
+  currentSongIndex = index;
+}
+
+// Update progress bar as song plays
 audioElement.addEventListener('timeupdate', () => {
   let progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
   myProgressBar.value = progress;
 });
 
-// Change song time based on progress bar
+// Seek functionality using progress bar
 myProgressBar.addEventListener('change', () => {
   audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
 });
-
-// Move to the next song
-document.querySelector(".fa-step-forward").addEventListener('click', () => {
-  songIndex = (songIndex + 1) % songs.length;
-  updateSong();
-});
-
-// Move to the previous song
-document.querySelector(".fa-step-backward").addEventListener('click', () => {
-  songIndex = (songIndex - 1 + songs.length) % songs.length;
-  updateSong();
-});
-
-// Function to update and play the selected song
-function updateSong() {
-  audioElement.src = songs[songIndex].filepath;
-  audioElement.currentTime = 0;
-  audioElement.play();
-  masterPlay.classList.remove('fa-play-circle');
-  masterPlay.classList.add('fa-pause-circle');
-  gif.style.opacity = 1;
-}
-
-// Play selected song from the list
-document.querySelectorAll('.songItem').forEach((element, index) => {
-  element.addEventListener('click', () => {
-    songIndex = index;
-    updateSong();
-  });
-});
- plays
-audioElement.addEventListener('timeupdate', () => {
-  const progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
-  myProgressBar.value = progress;
-});
-
-// Seek audio when progress bar is changed
-myProgressBar.addEventListener('change', () => {
-  audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
-});
-
-// Play or pause audio on play button click
-masterPlay.addEventListener('click', togglePlayPause);
