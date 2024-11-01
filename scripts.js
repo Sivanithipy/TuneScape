@@ -1,15 +1,15 @@
 // List of songs with file paths
 let songs = [
-  { songName: "Perfect", filePath: "songs/perfect.mp3", coverPath: "perfect.jpg" },
-  { songName: "Senorita", filePath: "songs/senorita.mp3", coverPath: "senorita.jpg" },
-  { songName: "A Thousand Years", filePath: "songs/a_thousand_years.mp3", coverPath: "a thousand years.jpg" },
-  { songName: "Left and Right", filePath: "songs/left_and_right.mp3", coverPath: "left and right.jpg" },
-  { songName: "Love Story", filePath: "songs/love_story.mp3", coverPath: "love story.jpg" },
-  { songName: "Night Changes", filePath: "songs/night_changes.mp3", coverPath: "night changes.jpg" },
-  { songName: "Peaches", filePath: "songs/peaches.mp3", coverPath: "peaches.jpg" },
-  { songName: "Strip That Down", filePath: "songs/strip_that_down.mp3", coverPath: "strip that down.jpg" },
-  { songName: "Kiss Me", filePath: "songs/kiss_me.mp3", coverPath: "kiss me.jpg" },
-  { songName: "Friends", filePath: "songs/friends.mp3", coverPath: "friends.jpg" }
+  { songName: "Perfect", filePath: "mp3/1.mp3.mp3", coverPath: "perfect.jpg" },
+  { songName: "Senorita", filePath: "mp3/2.mp3.mp3", coverPath: "senorita.jpg" },
+  { songName: "A Thousand Years", filePath: "mp3/3.mp3.mp3", coverPath: "a thousand years.jpg" },
+  { songName: "Left and Right", filePath: "mp3/4.mp3.mp3", coverPath: "left and right.jpg" },
+  { songName: "Love Story", filePath: "mp3/5.mp3.mp3", coverPath: "love story.jpg" },
+  { songName: "Night Changes", filePath: "mp3/6.mp3.mp3", coverPath: "night changes.jpg" },
+  { songName: "Peaches", filePath: "mp3/7.mp3.mp3", coverPath: "peaches.jpg" },
+  { songName: "Strip That Down", filePath: "mp3/8.mp3.mp3", coverPath: "strip that down.jpg" },
+  { songName: "Kiss Me", filePath: "mp3/9.mp3.mp3", coverPath: "kiss me.jpg" },
+  { songName: "Friends", filePath: "mp3/10.mp3.mp3", coverPath: "friends.jpg" }
 ];
 
 let audioElement = new Audio(songs[0].filePath);
@@ -64,3 +64,8 @@ audioElement.addEventListener('timeupdate', () => {
 myProgressBar.addEventListener('change', () => {
   audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
 });
+
+
+
+
+
